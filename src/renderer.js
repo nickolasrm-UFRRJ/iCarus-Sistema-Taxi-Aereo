@@ -141,6 +141,12 @@ function updateDate() {
         dataVoo = m.toDate()
     else
         dataVoo = undefined
+
+    $('#piloto').empty().append('<option selected disabled>Selecione um piloto</option>')
+    idPiloto = undefined
+    $('#veiculo').empty().append('<option selected disabled>Selecione um veículo</option>')
+    idVeiculo = undefined
+    
 }
 
 
@@ -283,15 +289,16 @@ function clearForm() {
     $('#dataEmbarque').val('')
     $('#horaPartida').val('')
     dataVoo = undefined
-    $('#tipoVoo').empty()
+    $('#tipoVoo').empty().append('<option selected disabled>Selecione um produto</option>')
     idProduto = undefined
-    $('#veiculo').empty()
+    productsLoaded = false
+    $('#veiculo').empty().append('<option selected disabled>Selecione um veículo</option>')
     idVeiculo = undefined
     $('#aeroportoOrigem').val('')
     idOrigem = undefined
     $('#aeroportoDestino').val('')
     idDestino = undefined
-    $('#piloto').empty()
+    $('#piloto').empty().append('<option selected disabled>Selecione um piloto</option>')
     idPiloto = undefined
     $('#buscarCliente').val('')
     $('#clientsList').empty()
