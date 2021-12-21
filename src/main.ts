@@ -7,18 +7,29 @@ import Piloto from "../backend/src/modelo/Piloto";
 var controle = new Controle();
 
 console.log(controle.login("root", "12345678"))
-controle.adicionarCliente("111.111.111-11", "11.111.111-1", "Nickolas", "end-Nickolas", "tel-Nickolas", false);
-controle.adicionarCliente("111.222.222-22", "11.222.222-2", "Natalia", "end-Natalia", "tel-Natalia", false);
-controle.adicionarAeroporto("Santos Dumont", "Rio de janeiro", "RJ");
-controle.adicionarAeroporto("Guarulhos", "Sao Paulo", "SP");
-controle.adicionarProduto('Salto de paraquedas');
+controle.adicionarCliente("111.111.111-11", "11.111.111-1", "Nickolas", "end-Nickolas", "tel-Nickolas", false); // adicionado na venda com id 0
+controle.adicionarCliente("111.222.222-22", "11.222.222-2", "Natalia", "end-Natalia", "tel-Natalia", false); // adicionado na venda com id 0
+controle.adicionarAeroporto("Santos Dumont", "Rio de janeiro", "RJ"); // adicionado na venda com id 0
+controle.adicionarAeroporto("Guarulhos", "Sao Paulo", "SP"); // adicionado na venda com id 0
+controle.adicionarProduto('Salto de paraquedas'); // adicionado na venda com id 0
 controle.adicionarPiloto("111.333.333-33", "11.333.333-3", "Julia", "Rua Teste", "661",
   1500, new Date(), "12345", "12345");
-controle.adicionarVeiculo('Boeing 747')
+controle.adicionarVeiculo('Boeing 747') // adicionado na venda com id 0
 
 controle.adicionarVendedor("111.444.444-44", "11.444.444-4", "Julia", "Rua Teste", "661",
   1500, new Date(), "12345");
 controle.login("111.444.444-44", "12345")
+
+let date = new Date('2021-12-21T10:00:00')
+let origin = controle.buscarAeroporto(
+  controle.listarAeroportos('', '', '')[0].id).id
+let destino = controle.buscarAeroporto(
+  controle.listarAeroportos('', '', '')[1].id).id
+
+let cpfsClentes : Array<string> = ["111.111.111-11", "111.222.222-22"]
+
+console.log(controle.adicionarVenda(date, origin, destino, 100, 100, controle.buscarVeiculo(
+  controle.listarVeiculosDisponiveis(new Date())[0].id).id, controle.buscarProduto(controle.listarProdutos()[0].id).id, cpfsClentes, "111.333.333-33" ) )
 
 //console.log("Aeroporto:",controle.listarAeroportos("Guarulho","",""));
 
