@@ -53,9 +53,10 @@ async function createWindow() {
       plugins: true
     }
   });
+  mainWindow.setMenuBarVisibility(false)
 
   await mainWindow.loadFile("../../static/venda.html");
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   ipcMain.on('update-aeroporto-origem', function (event, data) {
     listAeroportos = controle.listarAeroportos(data, "", "");
