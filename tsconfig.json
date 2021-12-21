@@ -6,6 +6,7 @@
     "outDir": "dist",
     "baseUrl": ".",
     "target": "ES6",
+    "esModuleInterop": true,
     "paths": {
       "*": ["node_modules/*"]
     }
