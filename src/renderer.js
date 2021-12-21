@@ -156,9 +156,9 @@ function updateValor() {
                                        .replaceAll('.', '')
                                        .replace(',','.'))
     if (isNaN(v))
-        valorVenda = undefined
+        valorVoo = undefined
     else
-        valorVenda = v
+        valorVoo = v
 }
 
 
@@ -277,6 +277,7 @@ function addOrder() {
         modalError('Duração inválida')
     if (idClients.length == 0)
         modalError('Nenhum cliente foi escolhido')
+    
     if (!wasErrorModal())
         ipcRenderer.send('add-order', {
             idProduto, idOrigem, idDestino, idPiloto,
