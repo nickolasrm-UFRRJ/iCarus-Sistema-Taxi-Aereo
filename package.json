@@ -1,0 +1,43 @@
+{
+  "name": "iCarus",
+  "version": "1.0.0",
+  "description": "Projeto de modelagem com backend e frontend",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "preinstall": "git clone --depth 1 https://github.com/Bionex/Trabalho-Modelagem backend && git clone --depth 1 https://github.com/juliarobaina/Icarus-Trabalho-Modelagem static",
+    "start": "npm run build && electron ./dist/src/main.js"
+  },
+  "keywords": [],
+  "author": "Franklin",
+  "devDependencies": {
+    "electron": "^16.0.2",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "electron-typescript-ipc": "^1.0.1",
+    "moment": "^2.29.1"
+  },
+  "plugins": [
+    [
+      "@electron-forge/plugin-webpack",
+      {
+        "mainConfig": "./webpack.main.config.js",
+        "renderer": {
+          "config": "./webpack.renderer.config.js",
+          "entryPoints": [
+            {
+              "html": "./src/index.html",
+              "js": "./src/renderer.ts",
+              "name": "main_window",
+              "preload": {
+                "js": "./src/preload.ts"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  ]
+}
